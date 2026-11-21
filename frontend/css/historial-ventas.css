@@ -1,0 +1,525 @@
+.pagina-dashboard {
+  background: #f4f7f5;
+  min-height: 100vh;
+}
+
+/*
+   ENCABEZADO
+ */
+
+.encabezado-historial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.encabezado-historial h4 {
+  color: #26352c;
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.encabezado-historial p {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* 
+   TARJETAS ESTADÍSTICAS
+*/
+
+.tarjeta-historial {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #edf0ed;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+}
+
+.tarjeta-historial-icono {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.tarjeta-historial p {
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.tarjeta-historial h4 {
+  color: #26352c;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.tarjeta-historial small {
+  color: #999;
+  font-size: 12px;
+}
+
+/* COLORES DE ICONOS */
+
+.ventas-icono {
+  background: #e3f5e9;
+  color: #16834b;
+}
+
+.productos-icono {
+  background: #e5efff;
+  color: #3478d4;
+}
+
+.clientes-icono {
+  background: #f0eaff;
+  color: #8154c7;
+}
+
+/* 
+   PANELES
+ */
+
+.panel-historial {
+  background: #ffffff;
+  border: 1px solid #edf0ed;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.panel-historial-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.panel-historial-titulo h6 {
+  color: #26352c;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.panel-historial-titulo h6 i {
+  color: #16834b;
+}
+
+.panel-historial-titulo small {
+  color: #888;
+  font-size: 13px;
+}
+
+/* 
+   FILTROS
+ */
+
+.panel-historial .form-label {
+  color: #444;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.panel-historial .form-control,
+.panel-historial .form-select,
+.panel-historial .input-group-text {
+  min-height: 40px;
+  font-size: 13px;
+  border-color: #e1e7e2;
+}
+
+.panel-historial .input-group-text {
+  background: #f8faf8;
+  color: #16834b;
+}
+
+.panel-historial .form-control:focus,
+.panel-historial .form-select:focus {
+  border-color: #16834b;
+  box-shadow: 0 0 0 0.2rem rgba(22, 131, 75, 0.12);
+}
+
+/* 
+   TABLA DE VENTAS
+*/
+
+.panel-historial .table {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.panel-historial .table thead th {
+  color: #536158;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 13px 12px;
+  background: #f6f8f6;
+  border-bottom: 1px solid #e8ece9;
+}
+
+.panel-historial .table tbody td {
+  color: #555;
+  padding: 13px 12px;
+  vertical-align: middle;
+}
+
+.panel-historial .table tbody tr:hover {
+  background: #f8fbf8;
+}
+
+/*
+   ESTADO DE VENTA
+*/
+
+.estado-venta {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+/*
+   BOTONES
+*/
+
+.btn-ver-detalle {
+  width: 34px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.encabezado-historial .btn-success {
+  background: #16834b;
+  border-color: #16834b;
+  font-size: 13px;
+  padding: 10px 16px;
+}
+
+.encabezado-historial .btn-success:hover {
+  background: #116b3d;
+  border-color: #116b3d;
+}
+
+/* 
+   MODAL DETALLE
+ */
+
+#modalDetalleVenta .modal-content {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#modalDetalleVenta .modal-header {
+  background: #ffffff;
+  border-bottom: 1px solid #edf0ed;
+}
+
+#modalDetalleVenta .modal-title {
+  color: #26352c;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#modalDetalleVenta .modal-title i {
+  color: #16834b;
+}
+
+#modalDetalleVenta .modal-body {
+  padding: 24px;
+}
+
+#modalDetalleVenta .modal-body small {
+  color: #888;
+  font-size: 12px;
+}
+
+#modalDetalleVenta .modal-body strong {
+  color: #26352c;
+  font-size: 13px;
+}
+
+/* 
+   BARRA SUPERIOR Y MENÚ HAMBURGUESA
+ */
+
+#btn-menu {
+  display: none;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: #e6f4eb;
+  color: #16834b;
+  padding: 0;
+  cursor: pointer;
+}
+
+#btn-menu i {
+  font-size: 25px;
+}
+
+#btn-menu:hover {
+  background: #d5ecdd;
+}
+
+/* 
+   MENÚ INFERIOR MÓVIL
+ */
+
+.menu-inferior {
+  display: none;
+}
+
+.opcion-movil {
+  min-width: 0;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #777;
+  text-decoration: none;
+  font-size: 11px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.opcion-movil i {
+  font-size: 21px;
+}
+
+.opcion-movil:hover,
+.opcion-movil.activo {
+  color: #16834b;
+  font-weight: bold;
+}
+
+.opcion-movil:focus-visible,
+.opcion-panel-mas:focus-visible {
+  outline: 2px solid #16834b;
+  outline-offset: 3px;
+}
+
+/* 
+   PANEL MÁS - DESLIZAMIENTO
+*/
+
+.panel-mas {
+  height: 85vh !important;
+  height: 85dvh !important;
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: none;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.panel-mas .offcanvas-header {
+  flex: 0 0 auto;
+  padding: 20px 22px 12px;
+  border-bottom: 1px solid #edf0ed;
+  background: #ffffff;
+}
+
+.panel-mas .offcanvas-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #26352c;
+}
+
+.panel-mas .offcanvas-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 20px 35px;
+}
+
+.lista-opciones-mas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 15px;
+}
+
+.opcion-panel-mas {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid #edf0ed;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #34443a;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.opcion-panel-mas:hover {
+  background: #eaf6ee;
+  border-color: #16834b;
+  color: #16834b;
+}
+
+.opcion-panel-mas i {
+  font-size: 21px;
+  color: #16834b;
+}
+
+.cerrar-sesion-movil {
+  width: 100%;
+  font-family: inherit;
+}
+
+.cerrar-sesion-movil i {
+  color: #dc3545;
+}
+
+.cerrar-sesion-movil:hover {
+  background: #fff0f0;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+/* 
+   RESPONSIVE - TABLETS
+ */
+
+@media (max-width: 991.98px) {
+  .contenido-principal {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .encabezado-historial {
+    align-items: flex-start;
+  }
+
+  .panel-historial {
+    padding: 18px;
+  }
+
+  /* Hamburguesa visible */
+
+  #btn-menu {
+    display: flex !important;
+  }
+
+  /* Barra inferior visible */
+
+  .menu-inferior {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 68px;
+    padding: 5px 4px;
+    align-items: center;
+    justify-content: space-around;
+    background: #ffffff;
+    border-top: 1px solid #e8ece9;
+    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.07);
+    z-index: 1050;
+  }
+
+  /* Espacio para que el contenido no quede tapado */
+
+  .contenido-historial {
+    padding-bottom: 110px !important;
+  }
+}
+
+/* 
+   RESPONSIVE - CELULARES
+ */
+
+@media (max-width: 575.98px) {
+  .encabezado-historial {
+    flex-direction: column;
+  }
+
+  .encabezado-historial .btn-success {
+    width: 100%;
+  }
+
+  .tarjeta-historial {
+    padding: 16px;
+  }
+
+  .panel-historial {
+    padding: 14px;
+  }
+
+  .panel-historial-titulo {
+    align-items: flex-start;
+  }
+
+  #modalDetalleVenta .modal-body {
+    padding: 16px;
+  }
+
+  .lista-opciones-mas {
+    grid-template-columns: 1fr;
+  }
+
+  .contenido-historial {
+    padding-bottom: 110px !important;
+  }
+
+  .opcion-movil {
+    font-size: 10px;
+  }
+
+  .opcion-movil i {
+    font-size: 20px;
+  }
+}
+
+/* 
+   ACCESIBILIDAD
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

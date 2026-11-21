@@ -1,0 +1,15 @@
+# Compilacion y ejecucion de Maven
+target/
+*.class
+
+# IDE Intellij IDEA
+.idea/
+*.iml
+
+# Otros editores
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/

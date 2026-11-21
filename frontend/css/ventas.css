@@ -1,0 +1,457 @@
+/* ENCABEZADO */
+
+.encabezado-ventas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.encabezado-ventas h4 {
+  color: #26352c;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.encabezado-ventas p {
+  color: #858585;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* PANELES */
+
+.panel-ventas {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid #edf0ed;
+}
+
+.panel-ventas-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.panel-ventas-titulo h6 {
+  color: #26352c;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* BUSCADOR */
+
+.panel-ventas .input-group-text {
+  background: #f5faf6;
+  border-color: #dee5df;
+  color: #198754;
+}
+
+.panel-ventas .form-control,
+.panel-ventas .form-select {
+  min-height: 42px;
+  border-color: #dee5df;
+  font-size: 14px;
+}
+
+.panel-ventas .form-control:focus,
+.panel-ventas .form-select:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.12);
+}
+
+.panel-ventas .form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+/* RESULTADOS DE PRODUCTOS */
+
+.resultados-productos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.mensaje-inicial {
+  text-align: center;
+  padding: 30px 10px;
+  color: #929a94;
+}
+
+.mensaje-inicial i {
+  font-size: 35px;
+  color: #a9cbb5;
+  margin-bottom: 10px;
+}
+
+.mensaje-inicial p {
+  font-size: 13px;
+  margin: 0;
+}
+
+/* TARJETA DE PRODUCTO */
+
+.producto-resultado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid #edf0ed;
+  border-radius: 9px;
+  transition: 0.2s ease;
+}
+
+.producto-resultado:hover {
+  background: #f5faf6;
+  border-color: #b8dcc5;
+}
+
+.producto-resultado-info {
+  min-width: 0;
+}
+
+.producto-resultado-info h6 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #26352c;
+  margin-bottom: 5px;
+}
+
+.producto-resultado-info p {
+  font-size: 12px;
+  color: #858585;
+  margin: 0;
+}
+
+.producto-resultado-precio {
+  color: #198754;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.producto-resultado .btn {
+  white-space: nowrap;
+}
+
+/* TABLA DEL CARRITO */
+
+.tabla-carrito {
+  margin-bottom: 0;
+  min-width: 600px;
+}
+
+.tabla-carrito thead th {
+  background: #f7faf8;
+  color: #647067;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 13px;
+  border-bottom: 1px solid #e9eeea;
+  white-space: nowrap;
+}
+
+.tabla-carrito tbody td {
+  padding: 14px 13px;
+  font-size: 13px;
+  color: #4b5563;
+  vertical-align: middle;
+}
+
+.tabla-carrito tbody tr:hover {
+  background: #f9fbf9;
+}
+
+.tabla-carrito .nombre-producto {
+  color: #26352c;
+  font-weight: 600;
+}
+
+.tabla-carrito .cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tabla-carrito .cantidad-control button {
+  width: 27px;
+  height: 27px;
+  border: 1px solid #dce5df;
+  background: #ffffff;
+  color: #198754;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabla-carrito .cantidad-control input {
+  width: 45px;
+  text-align: center;
+  border: 1px solid #dce5df;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 13px;
+}
+
+.tabla-carrito .btn-eliminar {
+  border: none;
+  background: transparent;
+  color: #dc3545;
+  font-size: 16px;
+}
+
+/* RESUMEN DE VENTA */
+
+.resumen-venta {
+  position: sticky;
+  top: 20px;
+}
+
+.resumen-linea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13px;
+  font-size: 14px;
+  color: #707b73;
+}
+
+.resumen-linea strong {
+  color: #37433a;
+  font-weight: 600;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.resumen-total span {
+  color: #26352c;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.resumen-total strong {
+  color: #198754;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+/* BOTONES */
+
+#btnRegistrarVenta {
+  min-height: 45px;
+  font-weight: 600;
+  background: #198754;
+  border-color: #198754;
+}
+
+#btnRegistrarVenta:hover {
+  background: #146c43;
+}
+
+#btnCancelarVenta {
+  min-height: 42px;
+  font-size: 13px;
+}
+
+/* MÉTODOS DE PAGO */
+
+.btn-metodo-pago {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #dce2e8;
+  border-radius: 10px;
+  color: #26352c;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.btn-metodo-pago i {
+  font-size: 19px;
+  color: #77818e;
+}
+
+.btn-metodo-pago:hover {
+  border-color: #198754;
+  background: #f5faf6;
+}
+
+.btn-metodo-pago.activo {
+  border: 2px solid #198754;
+  background: #eff8f2;
+  color: #26352c;
+}
+
+.btn-metodo-pago.activo i {
+  color: #198754;
+}
+
+/* CAMPO VUELTO */
+
+.campo-vuelto {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.campo-vuelto strong {
+  font-size: 20px;
+  color: #26352c;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1199px) {
+  .resumen-venta {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .contenido-dashboard {
+    padding: 18px 14px;
+  }
+
+  .panel-ventas {
+    padding: 16px;
+  }
+
+  .encabezado-ventas h4 {
+    font-size: 20px;
+  }
+
+  .encabezado-ventas p {
+    font-size: 12px;
+  }
+
+  .resumen-total strong {
+    font-size: 22px;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #comprobanteImprimible,
+  #comprobanteImprimible * {
+    visibility: visible !important;
+  }
+
+  #comprobanteImprimible {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px !important;
+    background: white;
+    color: black;
+  }
+
+  .modal-header,
+  .modal-footer,
+  .btn-close {
+    display: none !important;
+  }
+
+  .modal,
+  .modal-dialog,
+  .modal-content,
+  .modal-body {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .modal-backdrop {
+    display: none !important;
+  }
+
+  @page {
+    margin: 10mm;
+  }
+}
+
+/* ENCABEZADO IGUAL AL DASHBOARD */
+
+.topbar {
+  min-height: 85px;
+  height: 85px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border-bottom: 1px solid #e8ece9;
+  box-sizing: border-box;
+}
+
+.usuario-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.usuario-info strong {
+  display: block;
+  color: #26352c;
+  font-size: 14px;
+}
+
+.usuario-info small {
+  display: block;
+  color: #777777;
+  font-size: 12px;
+}
+
+.usuario-avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  background: #e6f4eb;
+  color: #16834b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+@media (max-width: 991.98px) {
+  .topbar {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .contenido-ventas {
+    padding-bottom: 100px;
+  }
+}

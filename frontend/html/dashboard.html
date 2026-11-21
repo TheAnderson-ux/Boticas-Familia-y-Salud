@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard | Boticas Familia & Salud</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+
+  <body class="pagina-dashboard">
+    <div class="container-fluid p-0">
+      <div class="row g-0 min-vh-100">
+        <!-- MENÚ LATERAL -->
+        <aside class="col-lg-2 col-md-3 sidebar" id="sidebar">
+          <div class="sidebar-logo">
+            <img
+              src="../assets/logo.svg"
+              alt="Logo de Boticas Familia & Salud"
+            />
+            <span>BOTICAS FAMILIA & SALUD</span>
+          </div>
+
+          <div class="sidebar-menu">
+            <a
+              href="dashboard.html"
+              class="menu-link activo"
+              data-modulo="dashboard"
+            >
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="ventas.html" class="menu-link" data-modulo="nueva-venta">
+              <i class="bi bi-plus-circle"></i>
+              <span>Nueva venta</span>
+            </a>
+
+            <a
+              href="historial-ventas.html"
+              class="menu-link"
+              data-modulo="ventas"
+            >
+              <i class="bi bi-cart3"></i>
+              <span>Ventas</span>
+            </a>
+
+            <a href="producto.html" class="menu-link" data-modulo="productos">
+              <i class="bi bi-box-seam"></i>
+              <span>Productos</span>
+            </a>
+
+            <a href="clientes.html" class="menu-link" data-modulo="clientes">
+              <i class="bi bi-people"></i>
+              <span>Clientes</span>
+            </a>
+
+            <a href="reportes.html" class="menu-link" data-modulo="reportes">
+              <i class="bi bi-bar-chart"></i>
+              <span>Reportes</span>
+            </a>
+
+            <a href="usuarios.html" class="menu-link" data-modulo="usuarios">
+              <i class="bi bi-person-badge"></i>
+              <span>Usuarios</span>
+            </a>
+
+            <a
+              href="configuracion.html"
+              class="menu-link"
+              data-modulo="configuracion"
+            >
+              <i class="bi bi-gear"></i>
+              <span>Configuración</span>
+            </a>
+          </div>
+
+          <!-- CERRAR SESIÓN -->
+          <div class="sidebar-footer">
+            <button
+              type="button"
+              class="menu-link boton-cerrar-sesion"
+              onclick="cerrarSesion()"
+            >
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Cerrar sesión</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="col-lg-10 col-md-9 contenido-principal">
+          <!-- BARRA SUPERIOR -->
+          <header class="topbar">
+            <div class="d-flex align-items-center gap-3">
+              <button
+                class="btn btn-light d-lg-none"
+                id="btn-menu"
+                type="button"
+                aria-label="Abrir menú"
+              >
+                <i class="bi bi-list fs-4"></i>
+              </button>
+
+              <div>
+                <h5 class="mb-0">Panel principal</h5>
+                <small class="text-secondary">
+                  Gestión de Boticas Familia & Salud
+                </small>
+              </div>
+            </div>
+
+            <!-- INFORMACIÓN DEL USUARIO -->
+            <div class="usuario-info">
+              <div class="usuario-avatar">
+                <i class="bi bi-person"></i>
+              </div>
+
+              <div class="d-none d-sm-block">
+                <strong id="nombreUsuario">Usuario</strong>
+                <small id="rolUsuario">Usuario del sistema</small>
+              </div>
+            </div>
+          </header>
+
+          <!-- DASHBOARD -->
+          <main class="contenido-dashboard">
+            <div class="container-fluid p-0">
+              <div class="row mb-4">
+                <div class="col-12">
+                  <h3>Dashboard</h3>
+                  <p class="text-secondary mb-0">
+                    Bienvenido al sistema de gestión.
+                  </p>
+                </div>
+              </div>
+
+              <!-- TARJETAS ESTADÍSTICAS -->
+              <div class="row g-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                  <div class="tarjeta-estadistica">
+                    <div class="tarjeta-icono ventas-icono">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="tarjeta-informacion">
+                      <p>Ventas del día</p>
+                      <h3 id="totalVentas">S/ 0.00</h3>
+                      <small>Ingresos registrados</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3" data-modulo="productos">
+                  <div class="tarjeta-estadistica">
+                    <div class="tarjeta-icono productos-icono">
+                      <i class="bi bi-box-seam"></i>
+                    </div>
+                    <div class="tarjeta-informacion">
+                      <p>Productos</p>
+                      <h3 id="totalProductos">0</h3>
+                      <small>Productos registrados</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3" data-modulo="clientes">
+                  <div class="tarjeta-estadistica">
+                    <div class="tarjeta-icono clientes-icono">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="tarjeta-informacion">
+                      <p>Clientes</p>
+                      <h3 id="totalClientes">0</h3>
+                      <small>Clientes registrados</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-xl-3" data-modulo="productos">
+                  <div class="tarjeta-estadistica">
+                    <div class="tarjeta-icono stock-icono">
+                      <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div class="tarjeta-informacion">
+                      <p>Stock bajo</p>
+                      <h3 id="totalStockBajo">0</h3>
+                      <small>Productos por reponer</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GRÁFICOS -->
+              <div class="row g-4 mt-2">
+                <div class="col-12 col-xl-8">
+                  <div class="panel-dashboard">
+                    <div class="panel-encabezado">
+                      <h5>Resumen de ventas</h5>
+                      <small>Comportamiento de ventas durante la semana</small>
+                    </div>
+
+                    <div class="grafico-contenedor">
+                      <canvas id="graficoVentas"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4">
+                  <div class="panel-dashboard">
+                    <div class="panel-encabezado">
+                      <h5>Productos más vendidos</h5>
+                      <small>Unidades vendidas</small>
+                    </div>
+
+                    <div class="grafico-contenedor">
+                      <canvas id="graficoProductos"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENÚ INFERIOR PARA CELULARES -->
+    <nav class="menu-inferior" aria-label="Navegación móvil">
+      <a
+        href="dashboard.html"
+        class="opcion-movil activo"
+        data-modulo="dashboard"
+      >
+        <i class="bi bi-house-door-fill"></i>
+        <span>Inicio</span>
+      </a>
+
+      <a href="producto.html" class="opcion-movil" data-modulo="productos">
+        <i class="bi bi-box-seam"></i>
+        <span>Productos</span>
+      </a>
+
+      <a href="clientes.html" class="opcion-movil" data-modulo="clientes">
+        <i class="bi bi-people"></i>
+        <span>Clientes</span>
+      </a>
+
+      <a href="ventas.html" class="opcion-movil" data-modulo="nueva-venta">
+        <i class="bi bi-cart3"></i>
+        <span>Ventas</span>
+      </a>
+
+      <button
+        type="button"
+        class="opcion-movil boton-mas"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#panelMas"
+        aria-controls="panelMas"
+      >
+        <i class="bi bi-grid"></i>
+        <span>Más</span>
+      </button>
+    </nav>
+
+    <!-- PANEL MÁS -->
+    <div
+      class="offcanvas offcanvas-bottom panel-mas"
+      tabindex="-1"
+      id="panelMas"
+      aria-labelledby="tituloPanelMas"
+    >
+      <div class="offcanvas-header">
+        <div>
+          <h5 class="offcanvas-title" id="tituloPanelMas">Más opciones</h5>
+          <small class="text-secondary">Herramientas del sistema</small>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <div class="lista-opciones-mas">
+          <a
+            href="historial-ventas.html"
+            class="opcion-panel-mas"
+            data-modulo="ventas"
+          >
+            <i class="bi bi-receipt"></i>
+            <span>Historial de ventas</span>
+          </a>
+
+          <a
+            href="reportes.html"
+            class="opcion-panel-mas"
+            data-modulo="reportes"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span>Reportes</span>
+          </a>
+
+          <a
+            href="usuarios.html"
+            class="opcion-panel-mas"
+            data-modulo="usuarios"
+          >
+            <i class="bi bi-person-badge"></i>
+            <span>Usuarios</span>
+          </a>
+
+          <a
+            href="configuracion.html"
+            class="opcion-panel-mas"
+            data-modulo="configuracion"
+          >
+            <i class="bi bi-gear"></i>
+            <span>Configuración</span>
+          </a>
+
+          <button
+            type="button"
+            class="opcion-panel-mas cerrar-sesion-movil"
+            onclick="cerrarSesion()"
+          >
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTIFICACIONES -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="notificacionSistema"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <i class="bi bi-bell-fill me-2"></i>
+          <strong class="me-auto">Sistema</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Cerrar"
+          ></button>
+        </div>
+
+        <div class="toast-body" id="mensajeNotificacion"></div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7f5;
+}
+
+/* LADO IZQUIERDO */
+.zona-izquierda {
+  position: relative;
+  isolation: isolate;
+  padding: 60px 9%;
+  color: white;
+}
+
+.zona-izquierda::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 -8% 0 0;
+  background: #16834b;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+}
+
+/* MARCA */
+.contenido-marca {
+  max-width: 570px;
+}
+
+.logo-marca {
+  width: 65px;
+  height: 65px;
+  border: 2px solid white;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.logo-marca span {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.contenido-marca h1 {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.subtitulo {
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.mensaje-bienvenida {
+  margin-top: 65px;
+  max-width: 480px;
+}
+
+.mensaje-bienvenida h2 {
+  font-size: 29px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.mensaje-bienvenida p {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.beneficios {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-size: 15px;
+}
+
+/* LADO DERECHO */
+.zona-derecha {
+  padding: 40px;
+}
+
+.login {
+  max-width: 400px;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.13);
+}
+
+.login h2 {
+  color: #16834b;
+  font-weight: bold;
+}
+
+.login p {
+  color: #777;
+}
+
+.login .form-control {
+  padding: 12px;
+}
+
+.login .btn {
+  padding: 12px;
+  background: #16834b;
+  border-color: #16834b;
+}
+/*logo_botica*/
+
+.logo-marca {
+  margin-bottom: 22px;
+}
+
+.logo-marca img {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991.98px) {
+  .zona-izquierda {
+    min-height: 350px;
+    padding: 40px 30px;
+  }
+
+  .zona-izquierda::before {
+    inset: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+
+  .contenido-marca {
+    max-width: 100%;
+  }
+
+  .contenido-marca h1 {
+    font-size: 30px;
+  }
+
+  .mensaje-bienvenida {
+    margin-top: 25px;
+  }
+
+  .mensaje-bienvenida h2 {
+    font-size: 23px;
+  }
+
+  .beneficios {
+    display: none;
+  }
+
+  .zona-derecha {
+    padding: 35px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zona-izquierda {
+    min-height: 300px;
+    padding: 30px 24px;
+  }
+
+  .logo-marca {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contenido-marca h1 {
+    font-size: 26px;
+  }
+
+  .mensaje-bienvenida {
+    margin-top: 20px;
+  }
+
+  .mensaje-bienvenida p {
+    font-size: 14px;
+  }
+
+  .login {
+    padding: 28px 22px;
+  }
+}

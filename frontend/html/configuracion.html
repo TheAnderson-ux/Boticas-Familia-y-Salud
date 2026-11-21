@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuración | Boticas Familia & Salud</title>
+
+    <!-- BOOTSTRAP 5.3.8 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP ICONS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ESTILOS DEL SISTEMA -->
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/configuracion.css" />
+  </head>
+
+  <body class="pagina-dashboard">
+    <div class="container-fluid">
+      <div class="row g-0 min-vh-100">
+        <!-- MENÚ LATERAL -->
+
+        <aside class="col-lg-2 col-md-3 sidebar" id="sidebar">
+          <div class="sidebar-logo">
+            <img
+              src="../assets/logo.svg"
+              alt="Logo de Boticas Familia & Salud"
+            />
+            <span>BOTICAS FAMILIA & SALUD</span>
+          </div>
+
+          <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-link" data-modulo="dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="ventas.html" class="menu-link" data-modulo="nueva-venta">
+              <i class="bi bi-plus-circle"></i>
+              <span>Nueva venta</span>
+            </a>
+
+            <a
+              href="historial-ventas.html"
+              class="menu-link"
+              data-modulo="ventas"
+            >
+              <i class="bi bi-cart3"></i>
+              <span>Ventas</span>
+            </a>
+
+            <a href="producto.html" class="menu-link" data-modulo="productos">
+              <i class="bi bi-box-seam"></i>
+              <span>Productos</span>
+            </a>
+
+            <a href="clientes.html" class="menu-link" data-modulo="clientes">
+              <i class="bi bi-people"></i>
+              <span>Clientes</span>
+            </a>
+
+            <a href="reportes.html" class="menu-link" data-modulo="reportes">
+              <i class="bi bi-bar-chart"></i>
+              <span>Reportes</span>
+            </a>
+
+            <a href="usuarios.html" class="menu-link" data-modulo="usuarios">
+              <i class="bi bi-person-badge"></i>
+              <span>Usuarios</span>
+            </a>
+
+            <a
+              href="configuracion.html"
+              class="menu-link activo"
+              data-modulo="configuracion"
+            >
+              <i class="bi bi-gear"></i>
+              <span>Configuración</span>
+            </a>
+          </div>
+
+          <div class="sidebar-footer">
+            <a href="../index.html" class="menu-link">
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Cerrar sesión</span>
+            </a>
+          </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <div class="col-lg-10 col-md-9 contenido-principal">
+          <!-- ENCABEZADO -->
+          <header class="topbar">
+            <div class="d-flex align-items-center gap-3">
+              <button
+                class="btn btn-light d-lg-none"
+                id="btn-menu"
+                type="button"
+              >
+                <i class="bi bi-list fs-4"></i>
+              </button>
+
+              <div>
+                <h5 class="mb-0">BOTICAS FAMILIA & SALUD</h5>
+              </div>
+            </div>
+
+            <!-- INFORMACIÓN DEL USUARIO -->
+            <div class="usuario-info">
+              <div class="usuario-avatar">
+                <i class="bi bi-person"></i>
+              </div>
+
+              <div class="d-none d-sm-block">
+                <strong id="nombreUsuario">Usuario</strong>
+                <small id="rolUsuario">Usuario del sistema</small>
+              </div>
+            </div>
+          </header>
+
+          <!-- CONTENIDO DE CONFIGURACIÓN -->
+
+          <main class="contenido-dashboard">
+            <section class="encabezado-configuracion mb-4">
+              <div>
+                <h4>Configuración</h4>
+                <p class="text-secondary mb-0">
+                  Administra los datos y las preferencias del sistema.
+                </p>
+              </div>
+            </section>
+
+            <form id="formularioConfiguracion">
+              <!-- 1. DATOS DE LA BOTICA -->
+
+              <section class="panel-configuracion mb-4">
+                <div class="titulo-panel">
+                  <div class="icono-panel">
+                    <i class="bi bi-shop"></i>
+                  </div>
+
+                  <div>
+                    <h5>Datos de la botica</h5>
+                    <p>Información general del establecimiento.</p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="nombreBotica" class="form-label">
+                      Nombre comercial
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombreBotica"
+                      maxlength="120"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="razonSocial" class="form-label">
+                      Razón social
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="razonSocial"
+                      maxlength="150"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="rucBotica" class="form-label"> RUC </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rucBotica"
+                      maxlength="11"
+                      inputmode="numeric"
+                      pattern="[0-9]{11}"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      El RUC debe contener exactamente 11 números.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="telefonoBotica" class="form-label">
+                      Teléfono
+                    </label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="telefonoBotica"
+                      maxlength="40"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="correoBotica" class="form-label">
+                      Correo electrónico
+                    </label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="correoBotica"
+                      maxlength="120"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="direccionBotica" class="form-label">
+                      Dirección
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="direccionBotica"
+                      maxlength="200"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="horarioBotica" class="form-label">
+                      Horario de atención
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="horarioBotica"
+                      maxlength="120"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="logoBotica" class="form-label">
+                      Logo (URL o ruta)
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="logoBotica"
+                      placeholder="URL o ruta del logo"
+                    />
+                    <small class="text-secondary"> Campo opcional. </small>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 2. APARIENCIA Y PREFERENCIAS -->
+
+              <section class="panel-configuracion mb-4">
+                <div class="titulo-panel">
+                  <div class="icono-panel">
+                    <i class="bi bi-sliders"></i>
+                  </div>
+
+                  <div>
+                    <h5>Apariencia y preferencias</h5>
+                    <p>
+                      Personaliza la presentación y funcionamiento del sistema.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label for="temaSistema" class="form-label">
+                      Tema del sistema
+                    </label>
+                    <select class="form-select" id="temaSistema" required>
+                      <option value="claro">Claro</option>
+                      <option value="oscuro">Oscuro</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="formatoFecha" class="form-label">
+                      Formato de fecha
+                    </label>
+                    <select class="form-select" id="formatoFecha" required>
+                      <option value="dd/mm/aaaa">DD/MM/AAAA</option>
+                      <option value="yyyy-mm-dd">AAAA-MM-DD</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="formatoHora" class="form-label">
+                      Formato de hora
+                    </label>
+                    <select class="form-select" id="formatoHora" required>
+                      <option value="12">12 horas</option>
+                      <option value="24">24 horas</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="preferencia-notificaciones">
+                      <div>
+                        <strong>Notificaciones del sistema</strong>
+                        <p class="text-secondary mb-0">
+                          Activar avisos y notificaciones del sistema.
+                        </p>
+                      </div>
+
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="notificacionesActivas"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 3. CONFIGURACIÓN DE VENTAS -->
+              <section class="panel-configuracion mb-4">
+                <div class="titulo-panel">
+                  <div class="icono-panel">
+                    <i class="bi bi-cart-check"></i>
+                  </div>
+
+                  <div>
+                    <h5>Configuración de ventas</h5>
+                    <p>
+                      Define las reglas y opciones para las operaciones de
+                      venta.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-12">
+                    <div class="preferencia-notificaciones">
+                      <div>
+                        <strong>Confirmar cancelación de venta</strong>
+                        <p class="text-secondary mb-0">
+                          Solicitar confirmación antes de cancelar una venta.
+                        </p>
+                      </div>
+
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="confirmarCancelacionVenta"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="preferencia-notificaciones">
+                      <div>
+                        <strong>Aplicar IGV</strong>
+                        <p class="text-secondary mb-0">
+                          Incluir el impuesto general a las ventas.
+                        </p>
+                      </div>
+
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="aplicarIgv"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="porcentajeIgv" class="form-label">
+                      Porcentaje de IGV (%)
+                    </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="porcentajeIgv"
+                      min="0"
+                      max="100"
+                      step="0.01"
+                      required
+                    />
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="metodoPagoPredeterminado" class="form-label">
+                      Método de pago predeterminado
+                    </label>
+                    <select
+                      class="form-select"
+                      id="metodoPagoPredeterminado"
+                      required
+                    >
+                      <option value="efectivo">Efectivo</option>
+                      <option value="tarjeta">Tarjeta</option>
+                      <option value="transferencia">Transferencia</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="preferencia-notificaciones">
+                      <div>
+                        <strong>Permitir cliente genérico</strong>
+                        <p class="text-secondary mb-0">
+                          Permitir ventas sin seleccionar un cliente específico.
+                        </p>
+                      </div>
+
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="clienteGenerico"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="preferencia-notificaciones">
+                      <div>
+                        <strong>Mostrar comprobante automáticamente</strong>
+                        <p class="text-secondary mb-0">
+                          Mostrar el comprobante al finalizar una venta.
+                        </p>
+                      </div>
+
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="mostrarComprobanteAuto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 4. CONFIGURACIÓN DE INVENTARIO -->
+              <section class="panel-configuracion mb-4">
+                <div class="titulo-panel">
+                  <div class="icono-panel">
+                    <i class="bi bi-box-seam"></i>
+                  </div>
+
+                  <div>
+                    <h5>Configuración de inventario</h5>
+                    <p>
+                      Establece los parámetros para controlar las existencias.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="stockMinimo" class="form-label">
+                      Stock mínimo de productos
+                    </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="stockMinimo"
+                      min="0"
+                      step="1"
+                      required
+                    />
+                    <small class="text-secondary">
+                      Cantidad mínima antes de considerar un producto con stock
+                      bajo.
+                    </small>
+                  </div>
+                </div>
+              </section>
+
+              <!-- BOTONES -->
+
+              <div class="acciones-configuracion">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="btnRestablecerConfiguracion"
+                >
+                  <i class="bi bi-arrow-counterclockwise me-1"></i>
+                  Restablecer
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="btnGuardarConfiguracion"
+                >
+                  <i class="bi bi-floppy me-1"></i>
+                  Guardar cambios
+                </button>
+              </div>
+            </form>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENÚ INFERIOR PARA MÓVILES -->
+
+    <nav class="menu-inferior">
+      <a href="dashboard.html" class="opcion-movil">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Inicio</span>
+      </a>
+
+      <a href="producto.html" class="opcion-movil">
+        <i class="bi bi-box-seam"></i>
+        <span>Productos</span>
+      </a>
+
+      <a href="clientes.html" class="opcion-movil">
+        <i class="bi bi-people"></i>
+        <span>Clientes</span>
+      </a>
+
+      <a href="ventas.html" class="opcion-movil">
+        <i class="bi bi-cart3"></i>
+        <span>Ventas</span>
+      </a>
+
+      <a href="configuracion.html" class="opcion-movil activo">
+        <i class="bi bi-gear"></i>
+        <span>Más</span>
+      </a>
+    </nav>
+
+    <!-- CONTENEDOR DE NOTIFICACIONES -->
+
+    <div
+      class="toast-container position-fixed top-0 end-0 p-3"
+      id="contenedorNotificaciones"
+    ></div>
+
+    <template id="plantillaNotificacion">
+      <div class="toast align-items-center border-0" role="alert">
+        <div class="d-flex">
+          <div class="toast-body"></div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+      </div>
+    </template>
+
+    <!-- SCRIPTS -->
+
+    <!-- BOOTSTRAP BUNDLE: INCLUYE POPOVER, TOAST, MODAL Y OTROS COMPONENTES -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FUNCIONES GENERALES Y AUTENTICACIÓN -->
+    <script src="../js/app.js"></script>
+
+    <!-- LÓGICA DE CONFIGURACIÓN -->
+    <script src="../js/configuracion.js"></script>
+  </body>
+</html>

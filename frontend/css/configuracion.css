@@ -1,0 +1,126 @@
+/* ENCABEZADO */
+.encabezado-configuracion h4 {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* PANELES */
+.panel-configuracion {
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.titulo-panel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.icono-panel {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef3ff;
+  color: #3158a5;
+  border-radius: 10px;
+  font-size: 21px;
+}
+
+.titulo-panel h5 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.titulo-panel p {
+  color: #7b8493;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* FORMULARIOS */
+.panel-configuracion .form-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #394150;
+}
+
+.panel-configuracion .form-control,
+.panel-configuracion .form-select {
+  min-height: 42px;
+  border-color: #dfe3ea;
+  font-size: 14px;
+}
+
+.panel-configuracion .form-control:focus,
+.panel-configuracion .form-select:focus {
+  border-color: #7895d4;
+  box-shadow: 0 0 0 3px rgba(49, 88, 165, 0.1);
+}
+
+/* NOTIFICACIONES */
+.preferencia-notificaciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px;
+  background: #f8f9fc;
+  border: 1px solid #edf0f5;
+  border-radius: 9px;
+}
+
+.preferencia-notificaciones strong {
+  font-size: 14px;
+}
+
+.preferencia-notificaciones p {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.preferencia-notificaciones .form-check-input {
+  width: 42px;
+  height: 22px;
+  cursor: pointer;
+}
+
+/* ACCIONES */
+.acciones-configuracion {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.acciones-configuracion .btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .panel-configuracion {
+    padding: 17px;
+  }
+
+  .titulo-panel {
+    margin-bottom: 20px;
+  }
+
+  .acciones-configuracion {
+    flex-direction: column-reverse;
+  }
+
+  .acciones-configuracion .btn {
+    width: 100%;
+  }
+}

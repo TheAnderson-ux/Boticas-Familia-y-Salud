@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Nueva venta | Boticas Familia & Salud</title>
+
+    <!-- BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP ICONS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS PROPIO -->
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/ventas.css" />
+  </head>
+
+  <body class="pagina-dashboard">
+    <div class="container-fluid p-0">
+      <div class="row g-0 min-vh-100">
+        <!-- ================================= -->
+        <!-- MENÚ LATERAL -->
+        <!-- ================================= -->
+
+        <aside class="col-lg-2 col-md-3 sidebar" id="sidebar">
+          <div class="sidebar-logo">
+            <img
+              src="../assets/logo.svg"
+              alt="Logo de Boticas Familia & Salud"
+            />
+            <span>BOTICAS FAMILIA & SALUD</span>
+          </div>
+
+          <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-link" data-modulo="dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a
+              href="ventas.html"
+              class="menu-link activo"
+              data-modulo="nueva-venta"
+            >
+              <i class="bi bi-plus-circle"></i>
+              <span>Nueva venta</span>
+            </a>
+
+            <a
+              href="historial-ventas.html"
+              class="menu-link"
+              data-modulo="ventas"
+            >
+              <i class="bi bi-cart3"></i>
+              <span>Ventas</span>
+            </a>
+
+            <a href="producto.html" class="menu-link" data-modulo="productos">
+              <i class="bi bi-box-seam"></i>
+              <span>Productos</span>
+            </a>
+
+            <a href="clientes.html" class="menu-link" data-modulo="clientes">
+              <i class="bi bi-people"></i>
+              <span>Clientes</span>
+            </a>
+
+            <a href="reportes.html" class="menu-link" data-modulo="reportes">
+              <i class="bi bi-bar-chart"></i>
+              <span>Reportes</span>
+            </a>
+
+            <a href="usuarios.html" class="menu-link" data-modulo="usuarios">
+              <i class="bi bi-person-badge"></i>
+              <span>Usuarios</span>
+            </a>
+
+            <a
+              href="configuracion.html"
+              class="menu-link"
+              data-modulo="configuracion"
+            >
+              <i class="bi bi-gear"></i>
+              <span>Configuración</span>
+            </a>
+          </div>
+
+          <!-- CERRAR SESIÓN -->
+          <div class="sidebar-footer">
+            <button
+              type="button"
+              class="menu-link boton-cerrar-sesion"
+              onclick="cerrarSesion()"
+            >
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Cerrar sesión</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <div class="col-lg-10 col-md-9 contenido-principal">
+          <!-- BARRA SUPERIOR -->
+          <header class="topbar">
+            <div class="topbar-titulo d-flex align-items-center gap-3">
+              <!-- BOTÓN MENÚ MÓVIL -->
+              <button
+                class="btn btn-light d-lg-none"
+                id="btn-menu"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+              >
+                <i class="bi bi-list fs-4"></i>
+              </button>
+
+              <div>
+                <h5 class="mb-0">BOTICAS FAMILIA & SALUD</h5>
+                <small class="text-secondary">Registrar una nueva venta</small>
+              </div>
+            </div>
+
+            <!-- INFORMACIÓN DEL USUARIO -->
+            <div class="usuario-info">
+              <div class="usuario-avatar">
+                <i class="bi bi-person"></i>
+              </div>
+
+              <div class="d-none d-sm-block">
+                <strong id="nombreUsuario">Usuario</strong>
+                <small id="rolUsuario">Usuario del sistema</small>
+              </div>
+            </div>
+          </header>
+
+          <!-- CONTENIDO DE VENTAS -->
+          <main class="contenido-dashboard contenido-ventas">
+            <!-- ENCABEZADO -->
+            <div class="encabezado-ventas mb-4">
+              <div>
+                <h4>Registrar venta</h4>
+                <p>Selecciona productos y completa los datos de la venta.</p>
+              </div>
+
+              <span class="badge bg-success">
+                <i class="bi bi-circle-fill me-1"></i>
+                Nueva operación
+              </span>
+            </div>
+
+            <div class="row g-4">
+              <!-- COLUMNA IZQUIERDA -->
+              <div class="col-xl-8">
+                <!-- BUSCADOR DE PRODUCTOS -->
+                <div class="panel-ventas mb-4">
+                  <div class="panel-ventas-titulo">
+                    <h6>
+                      <i class="bi bi-search me-2"></i>
+                      Buscar productos
+                    </h6>
+                  </div>
+
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="buscarProductoVenta"
+                      placeholder="Buscar por nombre o código..."
+                    />
+                  </div>
+
+                  <!-- RESULTADOS -->
+                  <div
+                    id="resultadosProductos"
+                    class="resultados-productos mt-3"
+                  >
+                    <div class="mensaje-inicial">
+                      <i class="bi bi-box-seam"></i>
+                      <p>Busca un producto para agregarlo a la venta.</p>
+                    </div>
+                  </div>
+
+                  <!-- PLANTILLA DE RESULTADO -->
+                  <template id="plantillaResultadoProducto">
+                    <div class="card mb-2 producto-resultado">
+                      <div
+                        class="card-body d-flex justify-content-between align-items-center gap-3"
+                      >
+                        <div>
+                          <h6 class="nombre-producto mb-1"></h6>
+
+                          <small
+                            class="codigo-producto text-muted d-block"
+                          ></small>
+
+                          <span
+                            class="badge bg-success mt-2 stock-producto"
+                          ></span>
+
+                          <strong
+                            class="precio-producto text-success d-block mt-2"
+                          ></strong>
+                        </div>
+
+                        <button
+                          type="button"
+                          class="btn btn-success btn-sm btn-agregar-producto"
+                        >
+                          <i class="bi bi-plus-lg me-1"></i>
+                          Agregar
+                        </button>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+
+                <!-- CARRITO DE COMPRAS -->
+                <div class="panel-ventas">
+                  <div class="panel-ventas-titulo">
+                    <h6>
+                      <i class="bi bi-cart3 me-2"></i>
+                      Productos seleccionados
+                    </h6>
+
+                    <span class="badge bg-success" id="cantidadProductos">
+                      0 productos
+                    </span>
+                  </div>
+
+                  <!-- TABLA DEL CARRITO -->
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Producto</th>
+                          <th>Precio</th>
+                          <th style="width: 130px">Cantidad</th>
+                          <th>Subtotal</th>
+                          <th class="text-center">Acción</th>
+                        </tr>
+                      </thead>
+
+                      <tbody id="tablaCarrito">
+                        <tr id="carritoVacio">
+                          <td colspan="5" class="text-center text-muted py-4">
+                            <i class="bi bi-cart3 fs-2 d-block mb-2"></i>
+
+                            No hay productos agregados.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- PLANTILLA PRODUCTO CARRITO -->
+                  <template id="plantillaProductoCarrito">
+                    <tr>
+                      <td>
+                        <strong class="nombre-producto"></strong>
+                        <small
+                          class="codigo-producto d-block text-muted"
+                        ></small>
+                      </td>
+
+                      <td class="precio-producto"></td>
+
+                      <td>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm cantidad-producto"
+                          min="1"
+                          value="1"
+                          aria-label="Cantidad del producto"
+                        />
+                      </td>
+
+                      <td class="subtotal-producto fw-semibold"></td>
+
+                      <td class="text-center">
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger btn-sm btn-eliminar"
+                          title="Eliminar producto"
+                          aria-label="Eliminar producto"
+                        >
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </template>
+                </div>
+              </div>
+
+              <!-- COLUMNA DERECHA -->
+
+              <div class="col-xl-4">
+                <!-- DATOS DE LA VENTA -->
+                <div class="panel-ventas mb-4">
+                  <div class="panel-ventas-titulo">
+                    <h6>
+                      <i class="bi bi-person me-2"></i>
+                      Datos de la venta
+                    </h6>
+                  </div>
+
+                  <!-- CLIENTE -->
+                  <div class="mb-4">
+                    <label for="clienteVenta" class="form-label">
+                      Cliente
+                    </label>
+
+                    <select class="form-select" id="clienteVenta">
+                      <option value="general" selected>Cliente genérico</option>
+                    </select>
+                  </div>
+
+                  <!-- MÉTODO DE PAGO -->
+                  <div class="mb-3">
+                    <label class="form-label"> Método de pago </label>
+
+                    <div class="row g-2">
+                      <div class="col-6">
+                        <button
+                          type="button"
+                          class="btn btn-metodo-pago activo"
+                          data-metodo="Efectivo"
+                        >
+                          <i class="bi bi-currency-dollar"></i>
+                          Efectivo
+                        </button>
+                      </div>
+
+                      <div class="col-6">
+                        <button
+                          type="button"
+                          class="btn btn-metodo-pago"
+                          data-metodo="Tarjeta"
+                        >
+                          <i class="bi bi-credit-card"></i>
+                          Tarjeta
+                        </button>
+                      </div>
+
+                      <div class="col-6">
+                        <button
+                          type="button"
+                          class="btn btn-metodo-pago"
+                          data-metodo="Yape/Plin"
+                        >
+                          <i class="bi bi-phone"></i>
+                          Yape/Plin
+                        </button>
+                      </div>
+
+                      <div class="col-6">
+                        <button
+                          type="button"
+                          class="btn btn-metodo-pago"
+                          data-metodo="Transferencia"
+                        >
+                          <i class="bi bi-bank"></i>
+                          Transferencia
+                        </button>
+                      </div>
+                    </div>
+
+                    <input type="hidden" id="metodoPago" value="Efectivo" />
+                  </div>
+
+                  <!-- MONTO RECIBIDO Y VUELTO -->
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <label for="montoRecibido" class="form-label">
+                        Monto recibido
+                      </label>
+
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="montoRecibido"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                      />
+                    </div>
+
+                    <div class="col-6">
+                      <label class="form-label"> Vuelto </label>
+
+                      <div class="campo-vuelto">
+                        <strong id="vueltoVenta">S/ 0.00</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- RESUMEN DE VENTA -->
+                <div class="panel-ventas resumen-venta">
+                  <div class="panel-ventas-titulo">
+                    <h6>
+                      <i class="bi bi-receipt me-2"></i>
+                      Resumen de venta
+                    </h6>
+                  </div>
+
+                  <!-- SUBTOTAL -->
+                  <div class="resumen-linea">
+                    <span>Subtotal</span>
+                    <strong id="subtotalVenta">S/ 0.00</strong>
+                  </div>
+
+                  <!-- DESCUENTO -->
+                  <div class="mb-3">
+                    <label for="porcentajeDescuento" class="form-label">
+                      Descuento (%)
+                    </label>
+
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="porcentajeDescuento"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                        value="0"
+                        placeholder="0"
+                      />
+
+                      <span class="input-group-text">%</span>
+                    </div>
+
+                    <small class="text-muted" id="montoDescuento">
+                      Descuento aplicado: S/ 0.00
+                    </small>
+                  </div>
+
+                  <hr />
+
+                  <!-- TOTAL -->
+                  <div class="resumen-total">
+                    <span>Total</span>
+                    <strong id="totalVenta">S/ 0.00</strong>
+                  </div>
+
+                  <hr />
+
+                  <!-- MÉTODO DE PAGO -->
+                  <div class="resumen-linea">
+                    <span>Método de pago</span>
+                    <strong id="resumenMetodoPago">Efectivo</strong>
+                  </div>
+
+                  <!-- MONTO RECIBIDO -->
+                  <div class="resumen-linea">
+                    <span>Monto recibido</span>
+                    <strong id="resumenMontoRecibido">S/ 0.00</strong>
+                  </div>
+
+                  <!-- VUELTO -->
+                  <div class="resumen-linea">
+                    <span>Vuelto</span>
+                    <strong id="resumenVuelto">S/ 0.00</strong>
+                  </div>
+
+                  <!-- REGISTRAR VENTA -->
+                  <button
+                    type="button"
+                    class="btn btn-success w-100 mt-4"
+                    id="btnRegistrarVenta"
+                  >
+                    <i class="bi bi-check-circle me-2"></i>
+                    Confirmar venta
+                  </button>
+
+                  <!-- CANCELAR VENTA -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary w-100 mt-2"
+                    id="btnCancelarVenta"
+                  >
+                    Cancelar venta
+                  </button>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENÚ INFERIOR PARA CELULARES -->
+
+    <nav class="menu-inferior" aria-label="Navegación móvil">
+      <a href="dashboard.html" class="opcion-movil" data-modulo="dashboard">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Inicio</span>
+      </a>
+
+      <a href="producto.html" class="opcion-movil" data-modulo="productos">
+        <i class="bi bi-box-seam"></i>
+        <span>Productos</span>
+      </a>
+
+      <a href="clientes.html" class="opcion-movil" data-modulo="clientes">
+        <i class="bi bi-people"></i>
+        <span>Clientes</span>
+      </a>
+
+      <a
+        href="ventas.html"
+        class="opcion-movil activo"
+        data-modulo="nueva-venta"
+      >
+        <i class="bi bi-cart3"></i>
+        <span>Ventas</span>
+      </a>
+
+      <button
+        type="button"
+        class="opcion-movil boton-mas"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#panelMas"
+        aria-controls="panelMas"
+      >
+        <i class="bi bi-grid"></i>
+        <span>Más</span>
+      </button>
+    </nav>
+
+    <!-- PANEL MÁS -->
+
+    <div
+      class="offcanvas offcanvas-bottom panel-mas"
+      tabindex="-1"
+      id="panelMas"
+      aria-labelledby="tituloPanelMas"
+    >
+      <div class="offcanvas-header">
+        <div>
+          <h5 class="offcanvas-title" id="tituloPanelMas">Más opciones</h5>
+
+          <small class="text-secondary"> Herramientas del sistema </small>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <div class="lista-opciones-mas">
+          <a
+            href="historial-ventas.html"
+            class="opcion-panel-mas"
+            data-modulo="ventas"
+          >
+            <i class="bi bi-receipt"></i>
+            <span>Historial de ventas</span>
+          </a>
+
+          <a
+            href="reportes.html"
+            class="opcion-panel-mas"
+            data-modulo="reportes"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span>Reportes</span>
+          </a>
+
+          <a
+            href="usuarios.html"
+            class="opcion-panel-mas"
+            data-modulo="usuarios"
+          >
+            <i class="bi bi-person-badge"></i>
+            <span>Usuarios</span>
+          </a>
+
+          <a
+            href="configuracion.html"
+            class="opcion-panel-mas"
+            data-modulo="configuracion"
+          >
+            <i class="bi bi-gear"></i>
+            <span>Configuración</span>
+          </a>
+
+          <button
+            type="button"
+            class="opcion-panel-mas cerrar-sesion-movil"
+            onclick="cerrarSesion()"
+          >
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMACIÓN DE VENTA -->
+
+    <div
+      class="modal fade"
+      id="modalConfirmarVenta"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="bi bi-receipt me-2"></i>
+              Confirmar venta
+            </h5>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <p>¿Deseas confirmar esta venta?</p>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Productos:</span>
+              <strong id="confirmarCantidad">0</strong>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Método de pago:</span>
+              <strong id="confirmarMetodo">Efectivo</strong>
+            </div>
+
+            <div class="d-flex justify-content-between border-top pt-3">
+              <span>Total a pagar:</span>
+              <strong id="confirmarTotal">S/ 0.00</strong>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-success"
+              id="btnConfirmarVenta"
+            >
+              <i class="bi bi-check-circle me-1"></i>
+              Confirmar venta
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTIFICACIONES -->
+
+    <div
+      class="toast-container position-fixed top-0 end-0 p-3"
+      id="contenedorNotificaciones"
+    ></div>
+
+    <template id="plantillaNotificacion">
+      <div class="toast align-items-center border-0 shadow" role="alert">
+        <div class="d-flex">
+          <div class="toast-body"></div>
+
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Cerrar"
+          ></button>
+        </div>
+      </div>
+    </template>
+
+    <!-- MODAL DE COMPROBANTE -->
+
+    <div
+      class="modal fade"
+      id="modalComprobanteVenta"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="bi bi-receipt me-2"></i>
+              Comprobante de venta
+            </h5>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div id="comprobanteImprimible" class="p-3">
+              <div class="text-center mb-4">
+                <h4 class="fw-bold">BOTICAS FAMILIA & SALUD</h4>
+
+                <p class="text-muted mb-1">Comprobante de venta</p>
+
+                <span class="badge text-bg-success"> Venta registrada </span>
+              </div>
+
+              <hr />
+
+              <div class="row mb-3">
+                <div class="col-6">
+                  <strong>N.º de venta:</strong>
+                  <span id="comprobanteNumero"></span>
+                </div>
+
+                <div class="col-6 text-end">
+                  <strong>Fecha:</strong>
+                  <span id="comprobanteFecha"></span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <strong>Cliente:</strong>
+                <span id="comprobanteCliente"></span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Producto</th>
+                      <th>Precio</th>
+                      <th>Cantidad</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="tablaComprobante"></tbody>
+                </table>
+              </div>
+
+              <div class="ms-auto" style="max-width: 300px">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Subtotal:</span>
+                  <strong id="comprobanteSubtotal"></strong>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Descuento:</span>
+                  <strong id="comprobanteDescuento"></strong>
+                </div>
+
+                <div class="d-flex justify-content-between border-top pt-2">
+                  <strong>TOTAL:</strong>
+                  <strong id="comprobanteTotal"></strong>
+                </div>
+
+                <div class="d-flex justify-content-between mt-2">
+                  <span>Método de pago:</span>
+                  <strong id="comprobanteMetodo"></strong>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <span>Monto recibido:</span>
+                  <strong id="comprobanteRecibido"></strong>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <span>Vuelto:</span>
+                  <strong id="comprobanteVuelto"></strong>
+                </div>
+              </div>
+
+              <hr />
+
+              <p class="text-center text-muted mb-0">
+                ¡Gracias por su preferencia!
+              </p>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-success"
+              id="btnImprimirComprobante"
+            >
+              <i class="bi bi-printer me-1"></i>
+              Imprimir comprobante
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHIVOS JAVASCRIPT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/ventas.js"></script>
+  </body>
+</html>

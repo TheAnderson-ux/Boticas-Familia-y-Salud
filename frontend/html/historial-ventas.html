@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Historial de ventas | Boticas Familia & Salud</title>
+
+    <!-- BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP ICONS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS PROPIO -->
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/historial-ventas.css" />
+  </head>
+
+  <body class="pagina-dashboard">
+    <div class="container-fluid p-0">
+      <div class="row g-0 min-vh-100">
+        <!-- MENÚ LATERAL -->
+        <aside class="col-lg-2 col-md-3 sidebar" id="sidebar">
+          <div class="sidebar-logo">
+            <img
+              src="../assets/logo.svg"
+              alt="Logo de Boticas Familia & Salud"
+            />
+            <span>BOTICAS FAMILIA &amp; SALUD</span>
+          </div>
+
+          <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-link" data-modulo="dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="ventas.html" class="menu-link" data-modulo="nueva-venta">
+              <i class="bi bi-plus-circle"></i>
+              <span>Nueva venta</span>
+            </a>
+
+            <a
+              href="historial-ventas.html"
+              class="menu-link activo"
+              data-modulo="ventas"
+            >
+              <i class="bi bi-cart3"></i>
+              <span>Ventas</span>
+            </a>
+
+            <a href="producto.html" class="menu-link" data-modulo="productos">
+              <i class="bi bi-box-seam"></i>
+              <span>Productos</span>
+            </a>
+
+            <a href="clientes.html" class="menu-link" data-modulo="clientes">
+              <i class="bi bi-people"></i>
+              <span>Clientes</span>
+            </a>
+
+            <a href="reportes.html" class="menu-link" data-modulo="reportes">
+              <i class="bi bi-bar-chart"></i>
+              <span>Reportes</span>
+            </a>
+
+            <a href="usuarios.html" class="menu-link" data-modulo="usuarios">
+              <i class="bi bi-person-badge"></i>
+              <span>Usuarios</span>
+            </a>
+
+            <a
+              href="configuracion.html"
+              class="menu-link"
+              data-modulo="configuracion"
+            >
+              <i class="bi bi-gear"></i>
+              <span>Configuración</span>
+            </a>
+          </div>
+
+          <div class="sidebar-footer">
+            <button
+              type="button"
+              class="menu-link boton-cerrar-sesion"
+              onclick="cerrarSesion()"
+            >
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Cerrar sesión</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="col-lg-10 col-md-9 contenido-principal">
+          <!-- BARRA SUPERIOR -->
+          <header class="topbar">
+            <div class="topbar-titulo d-flex align-items-center gap-3">
+              <button
+                class="btn btn-light d-lg-none"
+                id="btn-menu"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+              >
+                <i class="bi bi-list fs-4"></i>
+              </button>
+
+              <div>
+                <h5 class="mb-0">BOTICAS FAMILIA &amp; SALUD</h5>
+                <small class="text-secondary">Historial de ventas</small>
+              </div>
+            </div>
+
+            <div class="usuario-info">
+              <div class="usuario-avatar">
+                <i class="bi bi-person"></i>
+              </div>
+
+              <div class="d-none d-sm-block">
+                <strong id="nombreUsuario">Usuario</strong>
+                <small id="rolUsuario">Usuario del sistema</small>
+              </div>
+            </div>
+          </header>
+
+          <!-- CONTENIDO DEL HISTORIAL -->
+          <main class="contenido-dashboard contenido-historial">
+            <!-- ENCABEZADO -->
+            <div class="encabezado-historial mb-4">
+              <div>
+                <h4>Historial de ventas</h4>
+                <p>Consulta y administra las ventas realizadas.</p>
+              </div>
+
+              <a href="ventas.html" class="btn btn-success">
+                <i class="bi bi-plus-lg me-2"></i>
+                Nueva venta
+              </a>
+            </div>
+
+            <!-- TARJETAS ESTADÍSTICAS -->
+            <div class="row g-3 mb-4">
+              <!-- TOTAL DE VENTAS -->
+              <div class="col-xl-4 col-md-6">
+                <div class="tarjeta-historial">
+                  <div class="tarjeta-historial-icono ventas-icono">
+                    <i class="bi bi-receipt"></i>
+                  </div>
+
+                  <div>
+                    <p>Total de ventas</p>
+                    <h4 id="totalVentasRegistradas">0</h4>
+                    <small>Operaciones registradas</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- INGRESOS -->
+              <div class="col-xl-4 col-md-6">
+                <div class="tarjeta-historial">
+                  <div class="tarjeta-historial-icono productos-icono">
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+
+                  <div>
+                    <p>Total vendido</p>
+                    <h4 id="totalIngresos">S/ 0.00</h4>
+                    <small>Ingresos por ventas</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VENTAS DEL DÍA -->
+              <div class="col-xl-4 col-md-6">
+                <div class="tarjeta-historial">
+                  <div class="tarjeta-historial-icono clientes-icono">
+                    <i class="bi bi-calendar-check"></i>
+                  </div>
+
+                  <div>
+                    <p>Ventas del día</p>
+                    <h4 id="ventasDelDia">0</h4>
+                    <small>Operaciones de hoy</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FILTROS -->
+            <div class="panel-historial mb-4">
+              <div class="panel-historial-titulo">
+                <h6>
+                  <i class="bi bi-funnel me-2"></i>
+                  Filtrar ventas
+                </h6>
+              </div>
+
+              <div class="row g-3">
+                <!-- BUSCAR -->
+                <div class="col-lg-4 col-md-6">
+                  <label for="buscarVenta" class="form-label">
+                    Buscar venta
+                  </label>
+
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="buscarVenta"
+                      placeholder="Número o nombre del cliente..."
+                    />
+                  </div>
+                </div>
+
+                <!-- FECHA DESDE -->
+                <div class="col-lg-2 col-md-6">
+                  <label for="fechaDesde" class="form-label">Desde</label>
+
+                  <input type="date" class="form-control" id="fechaDesde" />
+                </div>
+
+                <!-- FECHA HASTA -->
+                <div class="col-lg-2 col-md-6">
+                  <label for="fechaHasta" class="form-label">Hasta</label>
+
+                  <input type="date" class="form-control" id="fechaHasta" />
+                </div>
+
+                <!-- MÉTODO DE PAGO -->
+                <div class="col-lg-2 col-md-6">
+                  <label for="filtroMetodoPago" class="form-label">
+                    Método de pago
+                  </label>
+
+                  <select class="form-select" id="filtroMetodoPago">
+                    <option value="">Todos</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Tarjeta">Tarjeta</option>
+                    <option value="Yape/Plin">Yape/Plin</option>
+                    <option value="Transferencia">Transferencia</option>
+                  </select>
+                </div>
+
+                <!-- ESTADO -->
+                <div class="col-lg-2 col-md-6">
+                  <label for="filtroEstado" class="form-label"> Estado </label>
+
+                  <select class="form-select" id="filtroEstado">
+                    <option value="">Todos</option>
+                    <option value="Completada">Completada</option>
+                    <option value="Anulada">Anulada</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- BOTÓN LIMPIAR -->
+              <div class="d-flex justify-content-end mt-3">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-sm"
+                  id="btnLimpiarFiltros"
+                >
+                  <i class="bi bi-arrow-counterclockwise me-1"></i>
+                  Limpiar filtros
+                </button>
+              </div>
+            </div>
+
+            <!-- TABLA DE VENTAS -->
+            <div class="panel-historial">
+              <div class="panel-historial-titulo">
+                <div>
+                  <h6>
+                    <i class="bi bi-list-ul me-2"></i>
+                    Registro de ventas
+                  </h6>
+
+                  <small>Listado de operaciones realizadas.</small>
+                </div>
+
+                <span class="badge bg-success" id="cantidadVentas">
+                  0 ventas
+                </span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>N.º Venta</th>
+                      <th>Fecha</th>
+                      <th>Cliente</th>
+                      <th>Método de pago</th>
+                      <th>Total</th>
+                      <th>Estado</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="tablaHistorialVentas">
+                    <tr id="historialVacio">
+                      <td colspan="7" class="text-center text-muted py-5">
+                        <i class="bi bi-receipt fs-1 d-block mb-2"></i>
+
+                        <strong>No hay ventas registradas</strong>
+
+                        <p class="mb-0 small">
+                          Las ventas realizadas aparecerán en este listado.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- PIE DE TABLA -->
+              <div
+                class="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-3"
+              >
+                <small class="text-muted" id="textoResultados">
+                  Mostrando 0 ventas
+                </small>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    NAVEGACIÓN INFERIOR PARA CELULARES
+
+    <nav class="menu-inferior" aria-label="Navegación móvil">
+      <a href="dashboard.html" class="opcion-movil" data-modulo="dashboard">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Inicio</span>
+      </a>
+
+      <a href="producto.html" class="opcion-movil" data-modulo="productos">
+        <i class="bi bi-box-seam"></i>
+        <span>Productos</span>
+      </a>
+
+      <a href="clientes.html" class="opcion-movil" data-modulo="clientes">
+        <i class="bi bi-people"></i>
+        <span>Clientes</span>
+      </a>
+
+      <a
+        href="historial-ventas.html"
+        class="opcion-movil activo"
+        data-modulo="ventas"
+      >
+        <i class="bi bi-cart3"></i>
+        <span>Ventas</span>
+      </a>
+
+      <button
+        type="button"
+        class="opcion-movil boton-mas"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#panelMas"
+        aria-controls="panelMas"
+      >
+        <i class="bi bi-grid"></i>
+        <span>Más</span>
+      </button>
+    </nav>
+
+    <!-- PANEL MÁS -->
+    <div
+      class="offcanvas offcanvas-bottom panel-mas"
+      tabindex="-1"
+      id="panelMas"
+      aria-labelledby="tituloPanelMas"
+    >
+      <div class="offcanvas-header">
+        <div>
+          <h5 class="offcanvas-title" id="tituloPanelMas">Más opciones</h5>
+          <small class="text-secondary">Herramientas del sistema</small>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Cerrar"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <div class="lista-opciones-mas">
+          <a
+            href="historial-ventas.html"
+            class="opcion-panel-mas"
+            data-modulo="ventas"
+          >
+            <i class="bi bi-receipt"></i>
+            <span>Historial de ventas</span>
+          </a>
+
+          <a
+            href="reportes.html"
+            class="opcion-panel-mas"
+            data-modulo="reportes"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span>Reportes</span>
+          </a>
+
+          <a
+            href="usuarios.html"
+            class="opcion-panel-mas"
+            data-modulo="usuarios"
+          >
+            <i class="bi bi-person-badge"></i>
+            <span>Usuarios</span>
+          </a>
+
+          <a
+            href="configuracion.html"
+            class="opcion-panel-mas"
+            data-modulo="configuracion"
+          >
+            <i class="bi bi-gear"></i>
+            <span>Configuración</span>
+          </a>
+
+          <button
+            type="button"
+            class="opcion-panel-mas cerrar-sesion-movil"
+            onclick="cerrarSesion()"
+          >
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL DETALLE DE VENTA -->
+    <div
+      class="modal fade"
+      id="modalDetalleVenta"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="bi bi-receipt me-2"></i>
+              Detalle de venta
+            </h5>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <small class="text-muted d-block">Número de venta</small>
+                <strong id="detalleNumeroVenta">-</strong>
+              </div>
+
+              <div class="col-md-6">
+                <small class="text-muted d-block">Fecha</small>
+                <strong id="detalleFechaVenta">-</strong>
+              </div>
+
+              <div class="col-md-6">
+                <small class="text-muted d-block">Cliente</small>
+                <strong id="detalleClienteVenta">-</strong>
+              </div>
+
+              <div class="col-md-6">
+                <small class="text-muted d-block">Método de pago</small>
+                <strong id="detalleMetodoPago">-</strong>
+              </div>
+            </div>
+
+            <h6 class="fw-bold mb-3">Productos vendidos</h6>
+
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+
+                <tbody id="tablaDetalleProductos"></tbody>
+              </table>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <div style="width: 280px">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Subtotal:</span>
+                  <strong id="detalleSubtotal">S/ 0.00</strong>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Descuento:</span>
+                  <strong id="detalleDescuento">S/ 0.00</strong>
+                </div>
+
+                <hr />
+
+                <div class="d-flex justify-content-between">
+                  <strong>Total:</strong>
+                  <strong class="text-success" id="detalleTotal">
+                    S/ 0.00
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANTILLA DE FILA DE VENTA -->
+    <template id="plantillaFilaVenta">
+      <tr>
+        <td class="numero-venta fw-semibold"></td>
+        <td class="fecha-venta"></td>
+        <td class="cliente-venta"></td>
+        <td class="metodo-venta"></td>
+        <td class="total-venta fw-semibold"></td>
+
+        <td>
+          <span class="estado-venta badge"></span>
+        </td>
+
+        <td class="text-center">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-sm btn-ver-detalle"
+            title="Ver detalle"
+            aria-label="Ver detalle"
+          >
+            <i class="bi bi-eye"></i>
+          </button>
+        </td>
+      </tr>
+    </template>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/historial-ventas.js"></script>
+  </body>
+</html>

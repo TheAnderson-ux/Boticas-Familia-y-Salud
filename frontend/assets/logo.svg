@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Logo de BOTICAS FAMILIA &amp; SALUD">
+    <!-- Círculo de fondo -->
+    <circle cx="60" cy="60" r="58" fill="#2e8b57" />
+    <circle cx="60" cy="60" r="50" fill="#ffffff" />
+
+    <!-- Cruz de farmacia -->
+    <rect x="52" y="32" width="16" height="56" rx="3" fill="#2e8b57" />
+    <rect x="32" y="52" width="56" height="16" rx="3" fill="#2e8b57" />
+
+    <!-- Hoja decorativa (toque de salud/verde) -->
+    <path d="M78 74c-8 8-20 8-24 0 8-8 20-8 24 0z" fill="#1f6e43" />
+    <line x1="54" y1="74" x2="78" y2="74" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Borde anillo -->
+    <circle cx="60" cy="60" r="56" fill="none" stroke="#1f6e43" stroke-width="2.5" />
+</svg>
